@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: ./api
+    ports:
+      - "8090:8080"
+    volumes:
+      - ./api:/go/src/app
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: quizz-golang
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./api/openapi.yml:/openapi.yml
+    environment:
+      SWAGGER_JSON: /openapi.yml
+
+volumes:
+  mysql_data:

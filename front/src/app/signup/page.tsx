@@ -1,8 +1,8 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/router";
 import { SignUpParams } from "../../interfaces";
-import { signUp } from "../api/auth";
-import { AuthContext } from "@/pages/_app";
+import { signUp } from "@/api/auth";
+import { AuthContext } from "../_app";
 import React, { useState, useContext } from "react";
 import Button from "@/atoms/button";
 import Link from "next/link";

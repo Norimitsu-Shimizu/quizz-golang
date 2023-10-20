@@ -1,7 +1,6 @@
 // サインアップ
 export interface SignUpParams {
-  last_name: string;
-  first_name: string;
+  username: string;
   mail_address: string;
   password: string;
 }

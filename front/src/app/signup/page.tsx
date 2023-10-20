@@ -1,21 +1,23 @@
+"use client";
+
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { SignUpParams } from "../../interfaces";
 import { signUp } from "@/api/auth";
 import { AuthContext } from "../_app";
 import React, { useState, useContext } from "react";
 import Button from "@/atoms/button";
 import Link from "next/link";
-import { getPublicConfig } from "@/utils/config";
+// import { getPublicConfig } from "@/utils/config";
 
 const SignupFormSection = () => {
-  const config = getPublicConfig();
+  // const config = getPublicConfig();
   const { setCurrentUser, setMail } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
-    setError,
+    // setError,
     formState: { isValid, errors },
     handleSubmit,
   } = useForm<SignUpParams>({
@@ -38,20 +40,20 @@ const SignupFormSection = () => {
         localStorage.setItem("_access_token", res.headers["access-token"]);
         localStorage.setItem("_client", res.headers["client"]);
         setCurrentUser(res.data.data);
-        setMail(data.mail_address);
-        router.push("/signup/mail-sent");
+        // setMail(data.mail_address);
+        // router.push("/signup/mail-sent");
       } else {
-        setError("mail_address", {
-          type: "custom",
-          message: "既に登録されているメールアドレスです。",
-        });
+        // setError("mail_address", {
+        //   type: "custom",
+        //   message: "既に登録されているメールアドレスです。",
+        // });
         setIsLoading(false);
       }
     } catch (err) {
-      setError("mail_address", {
-        type: "custom",
-        message: "既に登録されているメールアドレスです。",
-      });
+      // setError("mail_address", {
+      //   type: "custom",
+      //   message: "既に登録されているメールアドレスです。",
+      // });
       setIsLoading(false);
     }
   };
@@ -66,18 +68,18 @@ const SignupFormSection = () => {
           </label>
 
           <input
-            id="LastName"
+            id="UserName"
             type="text"
             placeholder="test"
-            {...register("last_name", {
+            {...register("username", {
               required: "名前を入力して下さい。",
             })}
           />
           <p>
-            {errors.last_name && errors.last_name.message}
+            {errors.username && errors.username.message}
           </p>
 
-          <input
+          {/* <input
             id="FirstName"
             type="text"
             placeholder="taro"
@@ -87,7 +89,7 @@ const SignupFormSection = () => {
           />
           <p>
             {errors.first_name && errors.first_name.message}
-          </p>
+          </p> */}
         </div>
 
         <div>

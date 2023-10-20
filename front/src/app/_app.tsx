@@ -1,15 +1,14 @@
-import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import React, { useState, createContext, useEffect, useCallback } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { User } from "@/interfaces/index";
-import { getPublicConfig } from "@/utils/config";
+// import { getPublicConfig } from "@/utils/config";
 
 export const AuthContext = createContext<any>("");
 
 
 export default function App({ Component, pageProps }: AppProps) {
-  const config = getPublicConfig();
+  // const config = getPublicConfig();
   const [currentUser, setCurrentUser] = useState<User>({
     mail_address: "",
   });

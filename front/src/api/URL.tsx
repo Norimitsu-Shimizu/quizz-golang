@@ -1,10 +1,10 @@
 import axios from "axios";
-import { getPublicConfig } from "@/utils/config";
+// import { getPublicConfig } from "@/utils/config";
 
-const config = getPublicConfig();
+// const config = getPublicConfig();
 
 export const client = axios.create({
-  baseURL: config.API_BASE_URL,
+  baseURL: "http://localhost:8000",
 });
 
 const FetchClient = () => {

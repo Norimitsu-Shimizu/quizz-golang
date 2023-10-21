@@ -24,9 +24,9 @@ services:
       - mysql_data:/var/lib/mysql
 
   swagger-ui:
-    image: swaggerapi/swagger-ui
+    image: swaggerapi/swagger-ui:v5.1.3
     ports:
-      - "8002:8002"
+      - "8002:8080"
     volumes:
       - ./api/openapi.yml:/openapi.yml
     environment:

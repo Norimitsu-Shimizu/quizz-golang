@@ -1,4 +1,4 @@
-FROM golang:1.19.5-alpine as build
+FROM golang:1.21.1-alpine as build
 
 ENV GO111MODULE="on"
 
@@ -22,7 +22,7 @@ EXPOSE 8080
 CMD ["./app"]
 
 # ローカル用のイメージ
-FROM golang:1.19.5-alpine as development
+FROM golang:1.21.1-alpine as development
 
 WORKDIR /go/src/app
 

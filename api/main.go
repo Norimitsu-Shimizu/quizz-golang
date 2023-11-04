@@ -2,6 +2,7 @@ package main
 
 import (
 	"app/internal/domain"
+	"app/internal/router"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -10,6 +11,7 @@ import (
 )
 
 func main() {
+	router.Router()
 	e := echo.New()
 	e.GET("/", func(c echo.Context) error {
 		db := dbInit()

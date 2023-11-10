@@ -2,23 +2,21 @@ package main
 
 import (
 	diprovider "app/internal/di"
-	"net/http"
 
-	"github.com/labstack/echo/v4"
 	"go.uber.org/fx"
 )
 
 func main() {
 	// router.Router()
-	fxApp := fx.New(diprovider.Providers...)
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		// db := dbInit()
-		// db.AutoMigrate(&domain.User{})
-		return c.String(http.StatusOK, "Hello, world!")
-	})
-	e.Logger.Fatal(e.Start(":8080"))
-	fxApp.Run()
+	fx.New(diprovider.Providers...).Run()
+	// e := echo.New()
+	// e.GET("/", func(c echo.Context) error {
+	// 	// db := dbInit()
+	// 	// db.AutoMigrate(&domain.User{})
+	// 	return c.String(http.StatusOK, "Hello, world!")
+	// })
+	// e.Logger.Fatal(e.Start(":8080"))
+	// fxApp.Run()
 
 	// db := dbInit()
 	// db.AutoMigrate(&domain.User{})

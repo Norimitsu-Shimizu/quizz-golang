@@ -2,8 +2,8 @@ package adapter
 
 import "app/internal/repository"
 
-type userGateway struct{}
+type UserGateway struct{}
 
 func NewUserGateway() repository.UserRepository {
-	return &userGateway{}
+	return &UserGateway{}
 }

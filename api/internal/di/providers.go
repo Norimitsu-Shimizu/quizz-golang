@@ -2,7 +2,8 @@ package diprovider
 
 import (
 	"app/internal/controller"
-	"app/internal/infrastructure"
+	"app/internal/db"
+	adapter "app/internal/infrastructure"
 	"app/internal/usecase"
 
 	"go.uber.org/fx"
@@ -12,6 +13,7 @@ var Providers = []fx.Option{
 	ControllerProviders,
 	UsecaseProviders,
 	RepositoryProviders,
+	DBProviders,
 }
 
 var ControllerProviders = fx.Provide(
@@ -24,4 +26,8 @@ var UsecaseProviders = fx.Provide(
 
 var RepositoryProviders = fx.Provide(
 	adapter.NewUserGateway,
+)
+
+var DBProviders = fx.Provide(
+	db.NewDatabaseConnection,
 )

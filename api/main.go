@@ -2,13 +2,10 @@ package main
 
 import (
 	diprovider "app/internal/di"
-	"app/internal/domain"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 	"go.uber.org/fx"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
 )
 
 func main() {
@@ -16,8 +13,8 @@ func main() {
 	fxApp := fx.New(diprovider.Providers...)
 	e := echo.New()
 	e.GET("/", func(c echo.Context) error {
-		db := dbInit()
-		db.AutoMigrate(&domain.User{})
+		// db := dbInit()
+		// db.AutoMigrate(&domain.User{})
 		return c.String(http.StatusOK, "Hello, world!")
 	})
 	e.Logger.Fatal(e.Start(":8080"))
@@ -27,11 +24,11 @@ func main() {
 	// db.AutoMigrate(&domain.User{})
 }
 
-func dbInit() *gorm.DB {
-	dsn := "user:password@tcp(db:3306)/quizz-golang?charset=utf8mb4&parseTime=true&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	if err != nil {
-		panic("failed to connect database")
-	}
-	return db
-}
+// func dbInit() *gorm.DB {
+// 	dsn := "user:password@tcp(db:3306)/quizz-golang?charset=utf8mb4&parseTime=true&loc=Local"
+// 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+// 	if err != nil {
+// 		panic("failed to connect database")
+// 	}
+// 	return db
+// }

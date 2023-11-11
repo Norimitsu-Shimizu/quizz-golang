@@ -8,10 +8,10 @@ import (
 )
 
 type SignUpController struct {
-	signUpUsecase *usecase.SignUpUsecase
+	signUpUsecase usecase.ISignUpUsecase
 }
 
-func NewSignUpController(signUpUsecase *usecase.SignUpUsecase) *SignUpController {
+func NewSignUpController(signUpUsecase usecase.ISignUpUsecase) *SignUpController {
 	return &SignUpController{
 		signUpUsecase: signUpUsecase,
 	}

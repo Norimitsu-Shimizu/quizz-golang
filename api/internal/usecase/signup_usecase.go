@@ -2,19 +2,19 @@ package usecase
 
 import "app/internal/repository"
 
-// type SignUpUsecase interface {
-// }
+type ISignUpUsecase interface {
+}
 
 // type signUpUsecaseInteractor struct {
 // 	userRepository repository.UserRepository
 // }
 
-type SignUpUsecase struct {
+type signUpUsecase struct {
 	userRepository repository.UserRepository
 }
 
-func NewSignUpUsecase(userRepository repository.UserRepository) *SignUpUsecase {
-	return &SignUpUsecase{
+func NewSignUpUsecase(userRepository repository.UserRepository) ISignUpUsecase {
+	return &signUpUsecase{
 		userRepository: userRepository,
 	}
 }

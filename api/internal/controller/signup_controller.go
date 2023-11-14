@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"app/internal/parameter"
 	"app/internal/usecase"
 	"net/http"
 
@@ -17,10 +18,20 @@ func NewSignUpController(signUpUsecase usecase.ISignUpUsecase) *SignUpController
 	}
 }
 
-// func (s *SignUpController) SignUp(c echo.Context) {
-
-// }
-
 func (s *SignUpController) SignUp(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, world!")
+	body := c.Request().Body
+
+	if body == nil {
+		return c.String(http.StatusBadRequest, "bodyがありません")
+	}
+
+	var req *parameter.PostUserRequest
+	if err := c.Bind(&req); err != nil {
+		return err
+	}
+
+	s.signUpUsecase.Execute(c, req)
+
+	// return c.String(http.StatusOK, "Hello, world!")
+	return c.NoContent(http.StatusCreated)
 }

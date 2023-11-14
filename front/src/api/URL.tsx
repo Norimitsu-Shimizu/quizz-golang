@@ -4,7 +4,7 @@ import axios from "axios";
 // const config = getPublicConfig();
 
 export const client = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "http://localhost:8090",
 });
 
 const FetchClient = () => {

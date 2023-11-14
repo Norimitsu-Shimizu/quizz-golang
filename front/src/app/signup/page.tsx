@@ -102,7 +102,7 @@ const SignupFormSection = () => {
             id="LastName"
             type="text"
             placeholder="test@example.com"
-            {...register("mail_address", {
+            {...register("email", {
               required: "メールアドレスを入力して下さい。",
               pattern: {
                 value: /^[\w\-._+]+@[\w\-._]+\.[A-Za-z]+/,
@@ -111,7 +111,7 @@ const SignupFormSection = () => {
             })}
           />
           <p>
-            {errors.mail_address && errors.mail_address.message}
+            {errors.email && errors.email.message}
           </p>
         </div>
         <div className="flex flex-col mx-auto">

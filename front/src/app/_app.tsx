@@ -10,7 +10,7 @@ export const AuthContext = createContext<any>("");
 export default function App({ Component, pageProps }: AppProps) {
   // const config = getPublicConfig();
   const [currentUser, setCurrentUser] = useState<User>({
-    mail_address: "",
+    email: "",
   });
   const [isSignedIn, setIsSignedIn] = useState<boolean>();
   const [isLoading, setIsLoading] = useState<boolean>(true);

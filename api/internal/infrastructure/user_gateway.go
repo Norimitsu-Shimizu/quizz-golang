@@ -24,3 +24,11 @@ func (u *UserGateway) Create(c echo.Context, user *domain.User) error {
 	}
 	return nil
 }
+
+func (u *UserGateway) GetByEmail(c echo.Context, email string) (*domain.User, error) {
+	var user domain.User
+	if err := u.DB.First(&user, "email = ?", email).Error; err != nil {
+		return nil, err
+	}
+	return &user, nil
+}

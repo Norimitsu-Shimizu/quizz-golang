@@ -8,7 +8,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
-func Router(e *echo.Echo, sc *controller.SignUpController) {
+func Router(e *echo.Echo, sc *controller.SignUpController, si *controller.SignInController) {
 	// e := echo.New()
 
 	e.Use(middleware.Logger())
@@ -21,4 +21,6 @@ func Router(e *echo.Echo, sc *controller.SignUpController) {
 	api := e.Group("/api/v1")
 
 	api.POST("/signup", sc.SignUp)
+	api.POST("/signin", si.SignIn)
+
 }

@@ -8,4 +8,5 @@ import (
 
 type UserRepository interface {
 	Create(c echo.Context, user *domain.User) error
+	GetByEmail(c echo.Context, email string) (*domain.User, error)
 }

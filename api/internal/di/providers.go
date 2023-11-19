@@ -31,10 +31,12 @@ var EchoServerProviders = fx.Provide(
 
 var ControllerProviders = fx.Provide(
 	controller.NewSignUpController,
+	controller.NewSignInController,
 )
 
 var UsecaseProviders = fx.Provide(
 	usecase.NewSignUpUsecase,
+	usecase.NewSignInUsecase,
 )
 
 var RepositoryProviders = fx.Provide(

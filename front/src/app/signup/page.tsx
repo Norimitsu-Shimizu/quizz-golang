@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { SignUpParams } from "../../interfaces";
 import { signUp } from "@/api/auth";
-import { AuthContext } from "../_app";
+import { AuthContext } from "@/store/authcontext";
 import React, { useState, useContext } from "react";
 import Button from "@/atoms/button";
 import Link from "next/link";
